@@ -1,24 +1,26 @@
-# Ignore environment variable files
+# Exclude virtual environments
+venv/
+__pycache__/
+
+# Exclude environment variable files
 .env
 
-# Ignore secret configuration files
-config/secrets.yaml
-
-# Ignore database files
-*.sqlite3
-
-# Ignore credentials
-credentials.json
-
-# Ignore key files
-*.pem
-
-# Ignore specific directories
-__pycache__/
-instance/
-
-# Ignore Mac OS specific
+# Exclude macOS system files
 .DS_Store
 
-# Ignore venv
-venv/
+# Exclude GCP specific files
+.gcloudignore
+
+# Python files
+*.pyc
+*.pyo
+
+
+# Ignore note.txt
+note.txt
+
+# Exclude GCP specific files
+.gcloudignore
+
+# Exclude api_key
+api_key.py
