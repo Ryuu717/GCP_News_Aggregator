@@ -1,4 +1,6 @@
 runtime: python39
+env_variables:
+  NEWS_API_KEY = '34017aa6d1b24496b1ef3d663d1c8e14'
 entrypoint: gunicorn -b :$PORT main:app
 
 handlers:
