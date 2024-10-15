@@ -1,5 +1,4 @@
 runtime: python39
-env_variables:
 entrypoint: gunicorn -b :$PORT app:app
 
 handlers:
