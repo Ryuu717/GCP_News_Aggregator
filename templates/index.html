@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Aggregator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">News Aggregator</h1>
+        <form method="POST" class="mt-4">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" name="query" class="form-control" placeholder="Search news by keyword or category">
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary btn-block">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Back to Headlines Button -->
+        {% if request.method == 'POST' %}
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Headlines</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row mt-5">
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="card mb-4">
+                            <img src="{{ article.urlToImage or url_for('static', filename='img/no-image.png') }}" class="card-img-top" alt="{{ article.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ article.title }}</h5>
+                                <p class="card-text">{{ article.description or "No description available." }}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Published at: {{ article.publishedAt }}</small>
+                                </p>
+                                <a href="{{ article.url }}" target="_blank" class="btn btn-primary">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No news articles found. Please try searching with a different keyword.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

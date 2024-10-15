@@ -1,0 +1,37 @@
+/* static/styles.css */
+
+/* Set a fixed height for the card to make it more compact */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 400px; /* Adjust the maximum height to make cards more compact */
+}
+
+.card-body {
+    flex-grow: 1;
+    padding: 15px; /* Reduce padding for a more compact look */
+}
+
+/* Limit the height of the image */
+.card-img-top {
+    object-fit: cover;
+    height: 150px; /* Reduce image height to make the card more compact */
+    width: 100%; /* Ensure the image fits the card width */
+}
+
+/* Ensure the "Read more" button stays at the bottom */
+.card-body .btn {
+    margin-top: auto;
+    padding: 5px 10px; /* Reduce button padding for a smaller size */
+}
+
+/* Limit the height of the card text and make it more compact */
+.card-text {
+    max-height: 50px; /* Reduce the text height limit */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem; /* Reduce text size */
+    margin-bottom: 10px; /* Add some spacing below the text */
+}
